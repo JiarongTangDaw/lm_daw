@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- validacion DTD en el propio xml -->
+<!-- <!DOCTYPE configuracion [
+    <!ELEMENT configuracion (sitioWeb+)>
+    <!ELEMENT sitioWeb (nombre,dominio,tecnologias,secciones,servidor)>
+    <!ELEMENT nombre (#PCDATA)>
+    <!ELEMENT dominio (#PCDATA)>
+    <!ELEMENT tecnologias (tecnologia+)>
+    <!ELEMENT tecnologia (#PCDATA)>
+    <!ELEMENT secciones (seccion+)>
+    <!ELEMENT seccion (#PCDATA)>
+    <!ELEMENT servidor (puerto,bbdd)>
+    <!ELEMENT puerto (#PCDATA)>
+    <!ELEMENT bbdd (#PCDATA)>
+]> -->
+
+<!-- validacion DTD en un fichero aparte -->
+<!-- <!DOCTYPE configuracion SYSTEM "config.dtd"> -->
+
+<?xml-model href="config.xsd"?>
+<!-- <configuracion xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="config.xsd"> -->
+<configuracion>
+    <sitioWeb>
+        <nombre>Valve</nombre>
+        <dominio>www.valve.com</dominio>
+        <tecnologias>
+            <tecnologia>Angular</tecnologia>
+            <tecnologia>Typescript</tecnologia>
+            <tecnologia>GO</tecnologia>
+        </tecnologias>
+
+        <secciones>
+            <seccion>Home</seccion>
+            <seccion>News</seccion>
+            <seccion>About</seccion>
+        </secciones>
+
+        <servidor>
+            <puerto>3010</puerto>
+            <bbdd>SQL Server</bbdd>
+        </servidor>
+    </sitioWeb>
+</configuracion>
+
+<!-- El '+' indica que puede haber infinito de elementos de ese tipo -->

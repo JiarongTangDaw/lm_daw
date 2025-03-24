@@ -1,0 +1,16 @@
+{
+    "configuracion":{
+        "sitioWeb":[
+            {
+                "nombre": "Valve",
+                "dominio": "www.valve.com",
+                "tecnologias": ["Angular","TypeScript","GO"],
+                "secciones": ["Home","News","About"],
+                "servidores": {
+                    "puerto": 3010,
+                    "bbdd": "SQL Server"
+                }
+            }
+        ]
+    }
+}

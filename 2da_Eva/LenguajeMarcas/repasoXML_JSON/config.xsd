@@ -1,0 +1,42 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="configuracion">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sitioWeb" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="nombre" type="xs:string"></xs:element>
+                            <xs:element name="dominio" type="xs:string"></xs:element>
+                            <xs:element name="tecnologias">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="tecnologia" type="xs:string" maxOccurs="unbounded"></xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="secciones">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="seccion" type="xs:string" maxOccurs="unbounded"></xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="servidor">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="puerto" type="xs:int"></xs:element>
+                                        <xs:element name="bbdd" type="xs:string" maxOccurs="unbounded"></xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+
+<!-- maxOccurs es para maximo numero de repeticiones
+    unbounded -> es para infinitas repeticiones
+ -->
