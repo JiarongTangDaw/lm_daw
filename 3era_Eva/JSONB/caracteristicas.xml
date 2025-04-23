@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<caracteristcas>
+    <marca>Fast Fish</marca>
+    <color>Rojo</color>
+    <talla>XL</talla>
+    <cantidad>2</cantidad>
+</caracteristcas>
+<!-- 
+Caracteristicas:
+    Marca
+    Color
+    Talla
+    Cantidad
+-->
