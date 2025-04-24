@@ -18,7 +18,7 @@ cabecera.onclick = function () {
 }
 
 //Leer el archivo JSON local
-fetch('./sitioWeb.json')
+fetch('assets/configuracion.json')
     .then(function(response) {
         response.json()
         .then(function (data) {
