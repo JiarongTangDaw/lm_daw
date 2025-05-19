@@ -13,6 +13,8 @@ const root = createRoot(rootElement);
 
 root.render(
   <Fragment>
-    <TwitterFollowCard/>
+    <TwitterFollowCard name={"Cucu"} userName={"cucu"}/>
+    <TwitterFollowCard name={"John"} userName={"john"}/>
+    <TwitterFollowCard name={"Homer"} userName={"homer"} />
   </Fragment>
 )
