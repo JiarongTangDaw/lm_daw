@@ -15,17 +15,66 @@ const root = createRoot(rootElement);
 // react va a renderizar siempre un unico elemento y ya dentor de ese elemento,
 // podremos añadir todos los elementos que queramos (etiquetas, componentes, etc...)
 
+      // <TwitterFollowCard name={"Cucu"} userName={"cucu"} initialIsFollowing={true}/>
+      // <TwitterFollowCard name={"John"} userName={"john"} initialIsFollowing={true}/>
+      // <TwitterFollowCard name={"Homer"} userName={"homer"} initialIsFollowing={false}/>
+      // <TwitterFollowCard/>
+
+const users = [
+  {
+    id: 1,
+    name: "Sharik",
+    userName: "sharik",
+    isFollowing: false
+  },
+  {
+    id: 2,
+    name: "Tony",
+    userName: "tony",
+    isFollowing: true
+  },
+  {
+    id: 3,
+    name:"David",
+    userName: "david",
+    isFollowing: false
+  },
+  {
+    id: 4,
+    name: "Jia",
+    userName: "jia",
+    isFollowing: true
+  }
+]
+
+// users.forEach(user => 
+//   {
+//     return (
+//       <TwitterFollowCard 
+//         name={user.name} 
+//         userName={user.userName} 
+//         initialIsFollowing={user.isFollowing}
+//       />
+//     );
+//   })
+
 root.render(
   <>
     <div className='App'>
-      <TwitterFollowCard name={"Cucu"} userName={"cucu"} initialIsFollowing={true}/>
-      <TwitterFollowCard name={"John"} userName={"john"} initialIsFollowing={true}/>
-      <TwitterFollowCard name={"Homer"} userName={"homer"} initialIsFollowing={false}/>
-      <TwitterFollowCard/>
+      {
+       users.map(user => {
+        const {id,userName,name, isFollowing} = user;
 
-      {/* <Task name={"Recoger NIE"} status={"completada"} owner={"Sebas"}/>
-      <Task name={"Limpiar cocina"} status={"pendiente"} owner={"Cucu"}/>
-      <Task name={"Tomar pastilla roja"} status={"completada"} owner={"Neo"}/> */}
+        return(
+          <TwitterFollowCard 
+            key = {id} 
+            name = {name} 
+            userName = {userName} 
+            isFollowing = {isFollowing}
+          />
+       )
+       })
+      }
     </div>
   </>
 )
