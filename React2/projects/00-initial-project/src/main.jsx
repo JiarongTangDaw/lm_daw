@@ -3,18 +3,28 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import { TwitterFollowCard } from './TwitterFollowCard.jsx'
 
+//import { Task } from './Task.jsx'
+
 
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
+const format = (userName) =>{return `@${userName}`}
+
 // react va a renderizar siempre un unico elemento y ya dentor de ese elemento,
-// podremos añadir todos los elementos que queramos 
+// podremos añadir todos los elementos que queramos (etiquetas, componentes, etc...)
 
 root.render(
-  <Fragment>
-    <TwitterFollowCard name={"Cucu"} userName={"cucu"}/>
-    <TwitterFollowCard name={"John"} userName={"john"}/>
-    <TwitterFollowCard name={"Homer"} userName={"homer"} />
-  </Fragment>
+  <>
+    <div className='App'>
+      <TwitterFollowCard name={"Cucu"} userName={"cucu"} ifFollowing={true} formatUserName={format("cucu")}/>
+      <TwitterFollowCard name={"John"} userName={"john"} ifFollowing={true} formatUserName={format("john")}/>
+      <TwitterFollowCard name={"Homer"} userName={"homer"} ifFollowing={false} formatUserName={format("homer")}/>
+
+      {/* <Task name={"Recoger NIE"} status={"completada"} owner={"Sebas"}/>
+      <Task name={"Limpiar cocina"} status={"pendiente"} owner={"Cucu"}/>
+      <Task name={"Tomar pastilla roja"} status={"completada"} owner={"Neo"}/> */}
+    </div>
+  </>
 )
