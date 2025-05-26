@@ -10,7 +10,7 @@ import { TwitterFollowCard } from './TwitterFollowCard.jsx'
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
-const format = (userName) =>{return `@${userName}`}
+// const format = (userName) =>{return `@${userName}`}
 
 // react va a renderizar siempre un unico elemento y ya dentor de ese elemento,
 // podremos añadir todos los elementos que queramos (etiquetas, componentes, etc...)
@@ -18,9 +18,10 @@ const format = (userName) =>{return `@${userName}`}
 root.render(
   <>
     <div className='App'>
-      <TwitterFollowCard name={"Cucu"} userName={"cucu"} ifFollowing={true} formatUserName={format("cucu")}/>
-      <TwitterFollowCard name={"John"} userName={"john"} ifFollowing={true} formatUserName={format("john")}/>
-      <TwitterFollowCard name={"Homer"} userName={"homer"} ifFollowing={false} formatUserName={format("homer")}/>
+      <TwitterFollowCard name={"Cucu"} userName={"cucu"} initialIsFollowing={true}/>
+      <TwitterFollowCard name={"John"} userName={"john"} initialIsFollowing={true}/>
+      <TwitterFollowCard name={"Homer"} userName={"homer"} initialIsFollowing={false}/>
+      <TwitterFollowCard/>
 
       {/* <Task name={"Recoger NIE"} status={"completada"} owner={"Sebas"}/>
       <Task name={"Limpiar cocina"} status={"pendiente"} owner={"Cucu"}/>
