@@ -4,29 +4,21 @@ import { useState } from 'react';
 
 import { Square } from './components/Square';
 import { WinnerModal } from './components/Winner';
+import { TURNS, WINNER_COMBOS } from '../logic/globalConstants';
 
 import './App.css'
 
 function Board() {
+
   //const board = /*Array(9).fill(null);*/["X","O","X","X","O","X","X","O","X"];
-  const [board, setBoard] = useState(Array(9).fill(null));
-
-  const TURNS = {
-    X: "X",
-    O: "O"
-  }
-  const [turn, setTurn] = useState(TURNS.X);
-
-  const WINNER_COMBOS = [
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-    [0,3,9],
-    [1,4,7],
-    [2,5,8],
-    [0,4,8],
-    [2,4,6]
-  ]
+  const [board, setBoard] = useState(() => {
+    const localStorage = window.localStorage.getItem('board');
+    return localStorage? JSON.parse(localStorage) : Array(9).fill(null);
+  });
+  const [turn, setTurn] = useState(() => {
+    const turnLocalStorage = window.localStorage.getItem('turno');
+    return turnLocalStorage? turnLocalStorage : TURNS.X;
+  });
   
   //el ganador por defecto esta a null, seolo cambia si encontramos un ganador
   const [winner, setWinner] = useState(null);
@@ -63,6 +55,10 @@ function Board() {
     const newTurn = turn === TURNS.X? TURNS.O : TURNS.X;
     setTurn(newTurn);
 
+    // guardar partida
+    window.localStorage.setItem('board',JSON.stringify(newBoard));
+    window.localStorage.setItem('turno', newTurn);
+
     const newWinner = checkWinner(newBoard);
     if(newWinner){
       confetty();
@@ -82,6 +78,9 @@ function Board() {
     setBoard(Array(9).fill(null));
     setTurn(TURNS.X);
     setWinner(null);
+
+    window.localStorage.removeItem('board');
+    window.localStorage.removeItem('turno');
   }
 
   const checkEndGame = (newBoard) => {
