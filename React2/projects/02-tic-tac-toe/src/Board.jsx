@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Square } from './components/Square';
 import { WinnerModal } from './components/Winner';
 import { TURNS, WINNER_COMBOS } from '../logic/globalConstants';
+import { setlocalStorage, resetLocalStorage } from '../logic/localStorage';
 
 import './App.css'
 
@@ -56,8 +57,7 @@ function Board() {
     setTurn(newTurn);
 
     // guardar partida
-    window.localStorage.setItem('board',JSON.stringify(newBoard));
-    window.localStorage.setItem('turno', newTurn);
+    setlocalStorage(newBoard, newTurn);
 
     const newWinner = checkWinner(newBoard);
     if(newWinner){
@@ -79,8 +79,7 @@ function Board() {
     setTurn(TURNS.X);
     setWinner(null);
 
-    window.localStorage.removeItem('board');
-    window.localStorage.removeItem('turno');
+    resetLocalStorage();
   }
 
   const checkEndGame = (newBoard) => {
