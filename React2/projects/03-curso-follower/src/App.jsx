@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 
+
 function App() {
   const[enable, setEnable] = useState(false)
   const [position, setPosition] = useState({x: 0, y: 0})
@@ -12,9 +13,9 @@ function App() {
   useEffect (() => {
     // se ejecutara por lo menos una vez
     const handleMove = (event) => {
-      const {clietX, clientY} = event;
-      setPosition({x: clietX, y: clientY});
-      console.log("pointermove: ", {clietX,clientY});
+      const {clientX, clientY} = event;
+      setPosition({x: clientX, y: clientY});
+      console.log("pointermove: ", {clientX,clientY});
       
     }
 
