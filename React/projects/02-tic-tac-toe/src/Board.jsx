@@ -6,18 +6,26 @@ import { Square } from './components/Square';
 import { WinnerModal } from './components/WinnerModal';
 
 import {TURNS, WINNER_COMBOS} from './logic/globalConstants'
+import { setLocalStorage, resetLocalStorage } from './logic/localStorage';
 
 import './App.css'
-
-
 
 function Board() {
   console.log("render board")
   //const board = Array(9).fill(null);
   //const board = ["X", "O", "X", "X", "O", "X", "X", "O", "X"];
-  const [board, setBoard] = useState(Array(9).fill(null));
+  const [board, setBoard] = useState(() => {
+    // IMPORTANTE: localStorage no funciona en servidores, solo a nivel local    
+    const localStorageBoard = window.localStorage.getItem('board')
+    return localStorageBoard ? JSON.parse(localStorageBoard) : Array(9).fill(null)
+  });
 
-  const [turn, setTurn] = useState(TURNS.X);
+
+  // Recuperamos valores de localStorage al inicializar un estado en useState para que no se haga siempre que se renderice el componente
+  const [turn, setTurn] = useState(() => {
+    const turnLocalStorage = window.localStorage.getItem('turn')
+    return turnLocalStorage ? turnLocalStorage : TURNS.X
+  });
 
   //El ganador por defecto está a null, solo cambia si encontramos un ganador
   const [winner, setWinner] = useState(null);
@@ -55,6 +63,11 @@ function Board() {
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
     setTurn(newTurn);
 
+    // guardar partida
+    // window.localStorage.setItem('board', JSON.stringify(newBoard))
+    // window.localStorage.setItem('turn', newTurn)
+    setLocalStorage(newBoard, newTurn)
+
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
       confetti()
@@ -70,6 +83,11 @@ function Board() {
     setBoard(Array(9).fill(null));
     setTurn(TURNS.X);
     setWinner(null);
+
+
+    // window.localStorage.removeItem('board')
+    // window.localStorage.removeItem('turn')
+    resetLocalStorage()
   }
 
   const checkEndGame = (newBoard) => {
