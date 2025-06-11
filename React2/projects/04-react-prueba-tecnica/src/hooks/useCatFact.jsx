@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchCatFact } from "./useCatImage";
+import { fetchCatFact } from "../services/fetchRandomFact";
 
 export function useCatFact () {
 
